@@ -1,0 +1,66 @@
+<!--
+  Generated template for the MapPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>  
+  <ion-navbar color="blueParking">   
+
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="contenido"> 
+
+
+ <form [formGroup]="formTarjetaId" class="formulario" (ngSubmit)="enviar()" novalidate>
+  <ion-card>
+
+    <ion-card-header>
+      <img class="imagen" [src]="imgFondo">
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating color="primary" >ID</ion-label>
+        <ion-input type="text" formControlName="id" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating color="primary" >Evento</ion-label>
+        <ion-input type="text"  formControlName="evento" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating color="primary" >Plazas Disponibles</ion-label>
+        <ion-input type="text" formControlName="totalAutos" readonly></ion-input>
+      </ion-item>
+    </ion-card-content>
+
+
+  </ion-card>
+
+
+  
+
+
+  
+</form>
+
+<ion-fab bottom  left #fab >
+  <button ion-fab color="blueParking"><ion-icon name="apps"></ion-icon></button>
+  <ion-fab-list side="top" >      
+    <button ion-fab color="blueParking"><ion-icon name="logo-vimeo"></ion-icon></button>
+    <button ion-fab color="blueParking"><ion-icon name="logo-googleplus"></ion-icon></button>
+  </ion-fab-list>
+  <ion-fab-list side="right">
+    <button ion-fab color="blueParking"><ion-icon name="logo-facebook"></ion-icon></button>
+    <button ion-fab color="blueParking"><ion-icon name="logo-twitter"></ion-icon></button>    
+  </ion-fab-list>
+</ion-fab>
+</ion-content>
