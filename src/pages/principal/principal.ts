@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, Platform, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-
-
-
-
 import { AngularFireAuth } from "angularfire2/auth"
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularFire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -19,18 +15,13 @@ import { AlertProvider } from '../../providers/alert/alert';
   templateUrl: 'principal.html',
 })
 
-
-
 export class PrincipalPage {
   firebaseUser: FirebaseListObservable<any[]>;
   public datos: Array<any>;
   private formTarjetaId: FormGroup;
   public totalCarros:any; 
-
   public bandera:boolean = false;
-
   firestore = firebase.storage();
-
   firequery = firebase.database().ref('query-data');
   public imgFondo;
   
@@ -55,8 +46,8 @@ export class PrincipalPage {
       this.datos=lista;    
       this.bandera = false;
       if(!this.bandera){
-        var evento = this.datos[1]['$value'];
         var acceso = this.datos[0]['$value'];
+      	var evento = this.datos[1]['$value'];
         if(acceso!= undefined){      
 
           if(acceso == "Concedido"){
@@ -64,7 +55,7 @@ export class PrincipalPage {
 
             if(evento != undefined){
               if(evento == "Salio"){
-                this.alertProvider.viewMessageToastController("Que tenga un buen dia")
+                this.alertProvider.viewMessageToastController("Que tenga buen día")
               }
               if(evento == "Entro"){
                 this.alertProvider.viewMessageToastController("Bienvenido")
@@ -72,19 +63,17 @@ export class PrincipalPage {
               this.formTarjetaId.controls.evento.setValue(evento);  
             }
           }
-
-          if(acceso == "No Concedido"){
-            this.formTarjetaId.controls.evento.setValue("");            
+          /*else{
+			this.formTarjetaId.controls.evento.setValue("");            
             this.alertProvider.viewMessageToastControllerError("Acesso No Concedido")
           }
 
+//          if(acceso == "No Concedido"){
 
-          
-        }
-
-        
+//          }
+       */ }
         this.formTarjetaId.controls.id.setValue(this.datos[2]['$value']);  
-        this.totalCarros=this.datos[3]['$value'];
+        this.totalCarros = this.datos[3]['$value'];
         this.formTarjetaId.controls.totalAutos.setValue(this.totalCarros);  
         this.bandera = true;
       }
@@ -104,8 +93,6 @@ export class PrincipalPage {
     })
   } 
 
-
-
   creareForm() {
 
     this.formTarjetaId = this.formBuilder.group({
@@ -116,9 +103,4 @@ export class PrincipalPage {
 
     
   }
-
-  
-
-  
-
 }
