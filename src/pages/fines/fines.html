@@ -1,0 +1,36 @@
+<!--
+  Generated template for the FinesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>  
+  <ion-navbar color="blueParking">   
+   <ion-title>
+     Multas
+   </ion-title>
+   <button ion-button menuToggle end>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+</ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+
+
+ <ion-searchbar
+ [(ngModel)]="myInput"
+ [showCancelButton]="shouldShowCancel"
+ (ionInput)="onEvent($event)">
+</ion-searchbar>
+<ion-list [virtualScroll]="finesList">
+  <button ion-item *virtualItem="let item" (click)="goToInformationFines()">
+    <h2> {{ item.date_start}}</h2>
+   <p>{{item.date_end}}</p>
+   <div class="item-note" item-right>{{ item.value}}
+   </div> 
+  </button>
+</ion-list>
+</ion-content>

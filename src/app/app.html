@@ -10,30 +10,21 @@
 
     
     <ion-list inset >
-      <h2>Nombre del Usuario</h2>
-      <ion-list-header transparent ><h2>Mis Cosas</h2></ion-list-header>
-      <button menuClose ion-item class="item_trns" item-right icon-left tappable>
-        <ion-icon name="bookmarks" color="blueParking"></ion-icon> 
-        Mis Clases
+      <h2 style="color:rgb(42,185,208)">Nombre del Usuario</h2>
+
+      <ion-list-header transparent ><h2>Mis Cosas</h2></ion-list-header>     
+
+      <button ion-item class="item_trns" icon-start menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon [name] = "p.icon" color="blueParking"></ion-icon>
+        {{p.title}}        
       </button>
-      <button menuClose ion-item class="item_trns" item-right icon-left tappable>
-        <ion-icon name="logo-buffer" color="blueParking"></ion-icon> 
-        Mis Multas
-      </button>  
-      <button menuClose ion-item class="item_trns" item-right icon-left tappable>
-        <ion-icon name="md-calendar" color="blueParking"></ion-icon> 
-        Pico y Placa
-      </button>  
-      <button menuClose ion-item class="item_trns" item-right icon-left tappable>
-        <ion-icon name="car" color="blueParking"></ion-icon> 
-        Reservar
-      </button>  
       
       <ion-list-header transparent ><h2>Usuario</h2></ion-list-header>
       <button menuClose ion-item class="item_trns" item-right icon-left tappable>
         <ion-icon name="log-out" color="blueParking"></ion-icon> 
         Salir
       </button>
+      
     </ion-list>
 
   </ion-content>

@@ -49,32 +49,48 @@ export class PrincipalPage {
 
   ngOnInit(){
     this.creareForm();
-    this.firebaseUser = this.afd.list('/Parqueadero');    
-    
-    // this.queryPaqueadero = this.firequery.ref.child('User/');
-
-    // this.queryPaqueadero.orderByChild("id").equalTo('E9 D3 E7 AB').on('value' , 
-    //   function(data){
-    //     console.log(data.val())
-    //   })
+    this.firebaseUser = this.afd.list('/Parqueadero');       
 
     this.firebaseUser.subscribe(lista => {      
       this.datos=lista;    
-      var evento = this.datos[1]['$value'];
-      if(evento != undefined){
-        if(evento == "Salio"){
-          this.alertProvider.viewMessageToastController("Que tenga un buen dia")
+      this.bandera = false;
+      if(!this.bandera){
+        var evento = this.datos[1]['$value'];
+        var acceso = this.datos[0]['$value'];
+        if(acceso!= undefined){      
+
+          if(acceso == "Concedido"){
+            this.alertProvider.viewMessageToastControllerSuccess("Acceso Concedido")
+
+            if(evento != undefined){
+              if(evento == "Salio"){
+                this.alertProvider.viewMessageToastController("Que tenga un buen dia")
+              }
+              if(evento == "Entro"){
+                this.alertProvider.viewMessageToastController("Bienvenido")
+              }
+              this.formTarjetaId.controls.evento.setValue(evento);  
+            }
+          }
+
+          if(acceso == "No Concedido"){
+            this.formTarjetaId.controls.evento.setValue("");            
+            this.alertProvider.viewMessageToastControllerError("Acesso No Concedido")
+          }
+
+
+          
         }
-        if(evento == "Entro"){
-          this.alertProvider.viewMessageToastController("Bienvenido")
-        }
+
+        
+        this.formTarjetaId.controls.id.setValue(this.datos[2]['$value']);  
+        this.totalCarros=this.datos[3]['$value'];
+        this.formTarjetaId.controls.totalAutos.setValue(this.totalCarros);  
+        this.bandera = true;
       }
-      this.formTarjetaId.controls.evento.setValue(evento);  
-      this.formTarjetaId.controls.id.setValue(this.datos[2]['$value']);  
-      this.totalCarros=this.datos[3]['$value'];
-      this.formTarjetaId.controls.totalAutos.setValue(this.totalCarros);  
     })
     this.fsp.getUrlStorage("LogoSmartParking.png",this.getUrlStorageImage.bind(this));
+    this.bandera = false;
   }
 
   getUrlStorageImage(image){

@@ -1,0 +1,46 @@
+<!--
+  Generated template for the InformationFinesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="blueParking">
+    <ion-title>Pago de Multa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<form [formGroup] = "formFine" class="formulario" (ngSubmit)= "payFines()" novalidate >
+		<ion-item>  
+			<ion-label floating >Parqueadero</ion-label>
+			<ion-input type="text" formControlName="nameParking"></ion-input>	
+		</ion-item>
+		
+		<ion-item>  
+			<ion-label floating >Fecha</ion-label>			
+			 <ion-datetime [disabled]="homework" formControlName="date"  [class.invalid]="formFine.controls.date.errors" displayFormat="DD/MMM/YYYY" pickerFormat="DD/MMM/YYYY" min="2016" max="{{today.getFullYear()+2}}" monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic"></ion-datetime>
+        
+		</ion-item>
+
+		<ion-item>  
+			<ion-label floating >Placa</ion-label>
+			<ion-input type="text" formControlName="licensePlate"></ion-input>	
+		</ion-item>
+		
+		
+		<ion-item>
+			<ion-label>opcion multa</ion-label>
+			<ion-select formControlName="fineCheck">
+				<ion-option *ngFor="let item of optionFine" [value]="item.value">{{item.data}}</ion-option>
+			</ion-select>
+		</ion-item>	
+
+		
+		<button ion-button full id="buttonForm" ion-button type="submit" color="orangeParking">Pagar</button>  
+	</form>
+</ion-content>

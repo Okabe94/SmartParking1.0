@@ -3,7 +3,14 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+
+//Pages
 import { PrincipalPage } from '../pages/principal/principal';
+import { ClassPage } from '../pages/class/class';
+import { FinesPage } from '../pages/fines/fines';
+import { ReservePage } from '../pages/reserve/reserve';
+import { PeakPlatePage } from '../pages/peak-plate/peak-plate';
+import { InformationFinesPage } from '../pages/information-fines/information-fines';
 
 
 import { MyApp } from './app.component';
@@ -20,48 +27,45 @@ import { AlertProvider } from '../providers/alert/alert';
 
 
 
-/*export const configFireBase={
-
-  apiKey: "AIzaSyBXMTDV6hJn1O94ClW9L3hUPgeS15dpUDE",
-  authDomain: "appandroid-2590d.firebaseapp.com",
-  databaseURL: "https://appandroid-2590d.firebaseio.com",
-  projectId: "appandroid-2590d",
-  storageBucket: "appandroid-2590d.appspot.com",
-  messagingSenderId: "88300898563"
-}*/
 @NgModule({
   declarations: [
-    MyApp,
-    PrincipalPage,
-    
-    
-     
-    
-    
+  MyApp,
+  PrincipalPage,
+  ClassPage,
+  FinesPage,
+  ReservePage,
+  PeakPlatePage,
+  InformationFinesPage
+
   ],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp),
+  BrowserModule,
+  IonicModule.forRoot(MyApp),
 
-    AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
-    
+  AngularFireModule.initializeApp(FIREBASE_CONFIG),
+  AngularFireAuthModule,
+  AngularFireDatabaseModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    PrincipalPage,    
+  MyApp,
+  PrincipalPage,    
+  ClassPage,
+  FinesPage,
+  ReservePage,
+  PeakPlatePage,
+  InformationFinesPage
   ],
   providers: [
-    StatusBar,
-    SplashScreen,  
-    AngularFireDatabaseModule,
+  StatusBar,
+  SplashScreen,  
+  AngularFireDatabaseModule,
 
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FireStorageProvider,
-    AlertProvider,
-    
+  {provide: ErrorHandler, useClass: IonicErrorHandler},
+  FireStorageProvider,
+  AlertProvider,
+
   ]
 })
 export class AppModule {}

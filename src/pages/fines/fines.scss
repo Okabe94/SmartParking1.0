@@ -1,0 +1,33 @@
+page-fines {
+.header .col {
+    font-weight: bold;
+    background: map-get($colors, orangeParking);
+    border: solid 1px lightgrey;
+    text-align: center;
+    color: white;
+}
+
+.col  {
+    border: solid 1px lightgrey;
+    border-bottom-style: none;
+    border-right-style: none;
+}
+.body:hover  {
+    border: solid 1px lightgrey;
+    border-bottom-style: none;
+    border-right-style: none;
+    cursor: pointer;
+    background-color: #BDBDBD;
+}
+.row{
+    text-align: center;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
+}
